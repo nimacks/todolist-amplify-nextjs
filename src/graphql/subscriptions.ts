@@ -1,105 +1,124 @@
-// tslint:disable
+/* tslint:disable */
+/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = `subscription OnCreateTodo {
-  onCreateTodo {
-    id
-    name
-    createdAt
-    completed
-    todoList {
+export const onCreateTodo = /* GraphQL */ `
+  subscription OnCreateTodo {
+    onCreateTodo {
+      id
+      name
+      createdAt
+      completed
+      todoList {
+        id
+        createdAt
+        todos {
+          nextToken
+        }
+        updatedAt
+      }
+      userId
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTodo = /* GraphQL */ `
+  subscription OnUpdateTodo {
+    onUpdateTodo {
+      id
+      name
+      createdAt
+      completed
+      todoList {
+        id
+        createdAt
+        todos {
+          nextToken
+        }
+        updatedAt
+      }
+      userId
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTodo = /* GraphQL */ `
+  subscription OnDeleteTodo {
+    onDeleteTodo {
+      id
+      name
+      createdAt
+      completed
+      todoList {
+        id
+        createdAt
+        todos {
+          nextToken
+        }
+        updatedAt
+      }
+      userId
+      updatedAt
+    }
+  }
+`;
+export const onCreateTodoList = /* GraphQL */ `
+  subscription OnCreateTodoList {
+    onCreateTodoList {
       id
       createdAt
       todos {
+        items {
+          id
+          name
+          createdAt
+          completed
+          userId
+          updatedAt
+        }
         nextToken
       }
+      updatedAt
     }
-    userId
   }
-}
 `;
-export const onUpdateTodo = `subscription OnUpdateTodo {
-  onUpdateTodo {
-    id
-    name
-    createdAt
-    completed
-    todoList {
+export const onUpdateTodoList = /* GraphQL */ `
+  subscription OnUpdateTodoList {
+    onUpdateTodoList {
       id
       createdAt
       todos {
+        items {
+          id
+          name
+          createdAt
+          completed
+          userId
+          updatedAt
+        }
         nextToken
       }
+      updatedAt
     }
-    userId
   }
-}
 `;
-export const onDeleteTodo = `subscription OnDeleteTodo {
-  onDeleteTodo {
-    id
-    name
-    createdAt
-    completed
-    todoList {
+export const onDeleteTodoList = /* GraphQL */ `
+  subscription OnDeleteTodoList {
+    onDeleteTodoList {
       id
       createdAt
       todos {
+        items {
+          id
+          name
+          createdAt
+          completed
+          userId
+          updatedAt
+        }
         nextToken
       }
-    }
-    userId
-  }
-}
-`;
-export const onCreateTodoList = `subscription OnCreateTodoList {
-  onCreateTodoList {
-    id
-    createdAt
-    todos {
-      items {
-        id
-        name
-        createdAt
-        completed
-        userId
-      }
-      nextToken
+      updatedAt
     }
   }
-}
-`;
-export const onUpdateTodoList = `subscription OnUpdateTodoList {
-  onUpdateTodoList {
-    id
-    createdAt
-    todos {
-      items {
-        id
-        name
-        createdAt
-        completed
-        userId
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteTodoList = `subscription OnDeleteTodoList {
-  onDeleteTodoList {
-    id
-    createdAt
-    todos {
-      items {
-        id
-        name
-        createdAt
-        completed
-        userId
-      }
-      nextToken
-    }
-  }
-}
 `;

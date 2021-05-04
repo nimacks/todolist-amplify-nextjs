@@ -1,13 +1,96 @@
 /* tslint:disable */
+/* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
 export type CreateTodoInput = {
   id?: string | null,
   name: string,
-  createdAt: string,
+  createdAt?: string | null,
   completed: boolean,
   userId: string,
   todoTodoListId: string,
+};
+
+export type ModelTodoConditionInput = {
+  name?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  completed?: ModelBooleanInput | null,
+  userId?: ModelStringInput | null,
+  and?: Array< ModelTodoConditionInput | null > | null,
+  or?: Array< ModelTodoConditionInput | null > | null,
+  not?: ModelTodoConditionInput | null,
+};
+
+export type ModelStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
+
+export type ModelSizeInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type Todo = {
+  __typename: "Todo",
+  id?: string,
+  name?: string,
+  createdAt?: string,
+  completed?: boolean,
+  todoList?: TodoList,
+  userId?: string,
+  updatedAt?: string,
+};
+
+export type TodoList = {
+  __typename: "TodoList",
+  id?: string,
+  createdAt?: string,
+  todos?: ModelTodoConnection,
+  updatedAt?: string,
+};
+
+export type ModelTodoConnection = {
+  __typename: "ModelTodoConnection",
+  items?:  Array<Todo | null > | null,
+  nextToken?: string | null,
 };
 
 export type UpdateTodoInput = {
@@ -25,7 +108,14 @@ export type DeleteTodoInput = {
 
 export type CreateTodoListInput = {
   id?: string | null,
-  createdAt: string,
+  createdAt?: string | null,
+};
+
+export type ModelTodoListConditionInput = {
+  createdAt?: ModelStringInput | null,
+  and?: Array< ModelTodoListConditionInput | null > | null,
+  or?: Array< ModelTodoListConditionInput | null > | null,
+  not?: ModelTodoListConditionInput | null,
 };
 
 export type UpdateTodoListInput = {
@@ -38,17 +128,17 @@ export type DeleteTodoListInput = {
 };
 
 export type ModelTodoFilterInput = {
-  id?: ModelIDFilterInput | null,
-  name?: ModelStringFilterInput | null,
-  createdAt?: ModelStringFilterInput | null,
-  completed?: ModelBooleanFilterInput | null,
-  userId?: ModelStringFilterInput | null,
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  completed?: ModelBooleanInput | null,
+  userId?: ModelStringInput | null,
   and?: Array< ModelTodoFilterInput | null > | null,
   or?: Array< ModelTodoFilterInput | null > | null,
   not?: ModelTodoFilterInput | null,
 };
 
-export type ModelIDFilterInput = {
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -59,40 +149,32 @@ export type ModelIDFilterInput = {
   notContains?: string | null,
   between?: Array< string | null > | null,
   beginsWith?: string | null,
-};
-
-export type ModelStringFilterInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-};
-
-export type ModelBooleanFilterInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export type ModelTodoListFilterInput = {
-  id?: ModelIDFilterInput | null,
-  createdAt?: ModelStringFilterInput | null,
+  id?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
   and?: Array< ModelTodoListFilterInput | null > | null,
   or?: Array< ModelTodoListFilterInput | null > | null,
   not?: ModelTodoListFilterInput | null,
 };
 
+export type ModelTodoListConnection = {
+  __typename: "ModelTodoListConnection",
+  items?:  Array<TodoList | null > | null,
+  nextToken?: string | null,
+};
+
 export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
+  input?: CreateTodoInput,
+  condition?: ModelTodoConditionInput | null,
 };
 
 export type CreateTodoMutation = {
-  createTodo:  {
+  createTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -102,21 +184,24 @@ export type CreateTodoMutation = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
 export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
+  input?: UpdateTodoInput,
+  condition?: ModelTodoConditionInput | null,
 };
 
 export type UpdateTodoMutation = {
-  updateTodo:  {
+  updateTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -126,21 +211,24 @@ export type UpdateTodoMutation = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
 export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
+  input?: DeleteTodoInput,
+  condition?: ModelTodoConditionInput | null,
 };
 
 export type DeleteTodoMutation = {
-  deleteTodo:  {
+  deleteTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -150,93 +238,104 @@ export type DeleteTodoMutation = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
 export type CreateTodoListMutationVariables = {
-  input: CreateTodoListInput,
+  input?: CreateTodoListInput,
+  condition?: ModelTodoListConditionInput | null,
 };
 
 export type CreateTodoListMutation = {
-  createTodoList:  {
+  createTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
 
 export type UpdateTodoListMutationVariables = {
-  input: UpdateTodoListInput,
+  input?: UpdateTodoListInput,
+  condition?: ModelTodoListConditionInput | null,
 };
 
 export type UpdateTodoListMutation = {
-  updateTodoList:  {
+  updateTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
 
 export type DeleteTodoListMutationVariables = {
-  input: DeleteTodoListInput,
+  input?: DeleteTodoListInput,
+  condition?: ModelTodoListConditionInput | null,
 };
 
 export type DeleteTodoListMutation = {
-  deleteTodoList:  {
+  deleteTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
 
 export type GetTodoQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetTodoQuery = {
-  getTodo:  {
+  getTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -246,12 +345,14 @@ export type GetTodoQuery = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -262,9 +363,9 @@ export type ListTodosQueryVariables = {
 };
 
 export type ListTodosQuery = {
-  listTodos:  {
+  listTodos?:  {
     __typename: "ModelTodoConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "Todo",
       id: string,
       name: string,
@@ -274,34 +375,38 @@ export type ListTodosQuery = {
         __typename: "TodoList",
         id: string,
         createdAt: string,
+        updatedAt: string,
       },
       userId: string,
+      updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type GetTodoListQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetTodoListQuery = {
-  getTodoList:  {
+  getTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
 
@@ -312,23 +417,24 @@ export type ListTodoListsQueryVariables = {
 };
 
 export type ListTodoListsQuery = {
-  listTodoLists:  {
+  listTodoLists?:  {
     __typename: "ModelTodoListConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type OnCreateTodoSubscription = {
-  onCreateTodo:  {
+  onCreateTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -338,17 +444,19 @@ export type OnCreateTodoSubscription = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
 export type OnUpdateTodoSubscription = {
-  onUpdateTodo:  {
+  onUpdateTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -358,17 +466,19 @@ export type OnUpdateTodoSubscription = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
 export type OnDeleteTodoSubscription = {
-  onDeleteTodo:  {
+  onDeleteTodo?:  {
     __typename: "Todo",
     id: string,
     name: string,
@@ -378,71 +488,79 @@ export type OnDeleteTodoSubscription = {
       __typename: "TodoList",
       id: string,
       createdAt: string,
-      todos:  {
+      todos?:  {
         __typename: "ModelTodoConnection",
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
+      updatedAt: string,
     },
     userId: string,
+    updatedAt: string,
   } | null,
 };
 
 export type OnCreateTodoListSubscription = {
-  onCreateTodoList:  {
+  onCreateTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
 
 export type OnUpdateTodoListSubscription = {
-  onUpdateTodoList:  {
+  onUpdateTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
 
 export type OnDeleteTodoListSubscription = {
-  onDeleteTodoList:  {
+  onDeleteTodoList?:  {
     __typename: "TodoList",
     id: string,
     createdAt: string,
-    todos:  {
+    todos?:  {
       __typename: "ModelTodoConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Todo",
         id: string,
         name: string,
         createdAt: string,
         completed: boolean,
         userId: string,
+        updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
+    updatedAt: string,
   } | null,
 };
